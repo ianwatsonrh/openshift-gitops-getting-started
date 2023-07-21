@@ -1,9 +1,9 @@
-{{- range .Values.namespaces }}
+{{- range .Values.names }}
+---
 apiVersion: v1
-kind: Namespace
+kind: ConfigMap
 metadata:
   name: {{ . | quote }}
-spec:
-  finalizers:
-  - kubernetes
+data:
+  a: b
 {{- end }}

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: cluster-helm
+    repoURL: 'https://github.com/ianwatsonrh/openshift-gitops-getting-started.git'
+    targetRevision: helm
+    helm:
+      valueFiles:
+        - values/five-names.yaml
+  sources: []
+  project: default
+  syncPolicy:
+    automated: null
+
